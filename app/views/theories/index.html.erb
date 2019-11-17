@@ -1,9 +1,7 @@
 <% @theories.each do |theory| %>
-  <div>
-    <h1><%= theory.title %></h1><br />
-    <i><%= theory.writer %></i><br />
+  <div class="booyah-box col-10 offset-1">
+    <h1><%= theory.title %></h1>
+    <i><%= theory.writer %></i><br /><br />
     <p><%= theory.explanation %></p><br />
   </div>
-
-  <hr />
 <% end %>
