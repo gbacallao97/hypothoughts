@@ -3,4 +3,8 @@ class TheoriesController < ApplicationController
     @theories = Theory.all
   end
 
+  def new
+    @theory = Theory.new
+  end
+
 end
