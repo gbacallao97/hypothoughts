@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TheroyTest < ActiveSupport::TestCase
+class TheoryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

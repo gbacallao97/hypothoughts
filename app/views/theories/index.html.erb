@@ -1,1 +1,9 @@
-<h1>Welcome to theories app </h1>
+<% @theories.each do |theory| %>
+  <div>
+    <h1><%= theory.title %></h1><br />
+    <i><%= theory.writer %></i><br />
+    <p><%= theory.explanation %></p><br />
+  </div>
+
+  <hr />
+<% end %>
