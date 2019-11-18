@@ -1,4 +1,5 @@
 class TheoriesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
     @theories = Theory.all
   end
@@ -8,7 +9,7 @@ class TheoriesController < ApplicationController
   end
 
   def create
-    Theory.create(theory_params)
+    current_user.theory.create(theory_params)
     redirect_to root_path
   end
 
