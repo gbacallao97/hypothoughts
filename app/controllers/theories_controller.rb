@@ -13,6 +13,10 @@ class TheoriesController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @theory = Theory.find(params[:id])
+  end
+
   private
 
   def theory_params

@@ -1,6 +1,8 @@
 <% @theories.each do |theory| %>
   <div class="booyah-box col-10 offset-1">
-    <h1><%= theory.title %></h1>
+    <img class="booyah-box-img-top">
+    <h1><%= link_to theory.title, theory_path(theory) %></h1><br />
+    <hr>
     <i><%= theory.writer %></i><br /><br />
     <p><%= theory.explanation %></p><br />
 
