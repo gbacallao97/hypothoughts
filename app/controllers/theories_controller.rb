@@ -17,6 +17,22 @@ class TheoriesController < ApplicationController
     @theory = Theory.find(params[:id])
   end
 
+  def edit
+    @theory = Theory.find(params[:id])
+  end
+
+  def update
+    @theory = Theory.find(params[:id])
+    @theory.update_attributes(place_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    @theory = Theory.find(params[:id])
+    @theory.destroy
+    redirect_to root_path
+  end
+
   private
 
   def theory_params

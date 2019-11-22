@@ -1,0 +1,10 @@
+<div class="booyah-box col-10 offset-1">
+  <h1>Edit Your Theory</h1>
+  <%= simple_form_for @theory do |f| %>
+    <%= f.input :title %>
+    <%= f.input :writer %>
+    <%= f.input :explanation %>
+    <br />
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+  <% end %>
+</div>
