@@ -1,5 +1,5 @@
 class TheoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @theories = Theory.all
@@ -10,8 +10,12 @@ class TheoriesController < ApplicationController
   end
 
   def create
-    current_user.theory.create(theory_params)
-    redirect_to root_path
+    @theory = current_user.theories.create(theory_params)
+    if @theory.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -31,12 +35,21 @@ class TheoriesController < ApplicationController
     if @theory.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
-    @theory.update_attributes(place_params)
-    redirect_to root_path
+
+    @theory.update_attributes(theory_params)
+    if @theory.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @theory = Theory.find(params[:id])
+    if @theory.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+
     @theory.destroy
     redirect_to root_path
   end
